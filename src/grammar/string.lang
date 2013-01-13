@@ -1,0 +1,25 @@
+<language id="string">
+
+  <lexer>
+  	<when state="default">
+  	
+  	  	<pattern exp="\\r" token="STRING_ESCAPE"  />
+  	  	<pattern exp="\\n" token="STRING_ESCAPE"  />
+		<pattern exp="\\t" token="STRING_ESCAPE"  />
+
+  	  	<pattern exp="\\b" token="STRING_ESCAPE"  />
+  	  	<pattern exp="\\f" token="STRING_ESCAPE"  />
+  	  	<pattern exp="\\O" token="STRING_ESCAPE"  />
+  	  	<pattern exp="\\v" token="STRING_ESCAPE"  />
+  	  	
+  	  	<pattern exp="\\\d{3}" token="STRING_ESCAPE"  />
+  	  	<pattern exp="\\x[0-9A-Fa-f]{2}" token="STRING_ESCAPE"  />
+  	  	<pattern exp="\\u[0-9A-Fa-f]{4}" token="STRING_ESCAPE"  />
+  	  	
+  	  	<pattern exp="\$?\{.*\}" token="STRING_SUBSTITUTION"  />
+  	  	
+  	</when>
+  	<default for="default" token="STRING" />	
+  </lexer>
+
+</language>

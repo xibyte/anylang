@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/soy/src-gen"
+    modelPluginID="soy" modelName="Html" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>html.ecore</foreignModel>
+  <genPackages prefix="Html" basePackage="org.eclipselabs.mlang.models" disposableProviderFactory="true"
+      ecorePackage="html.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="html.ecore#//TagType">
+      <genEnumLiterals ecoreEnumLiteral="html.ecore#//TagType/OPENING"/>
+      <genEnumLiterals ecoreEnumLiteral="html.ecore#//TagType/CLOSING"/>
+      <genEnumLiterals ecoreEnumLiteral="html.ecore#//TagType/SINGLE"/>
+    </genEnums>
+    <genClasses ecoreClass="html.ecore#//Tag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute html.ecore#//Tag/type"/>
+    </genClasses>
+    <genClasses ecoreClass="html.ecore#//TagScope">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference html.ecore#//TagScope/opening"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference html.ecore#//TagScope/closing"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Common" basePackage="org.eclipselabs.mlang.models" disposableProviderFactory="true"
+      ecorePackage="common.ecore#/">
+    <genClasses ecoreClass="common.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//Location/offset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//Location/length"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//Scope">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//Scope/body"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//Scope/parent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//Named">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//Named/name"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//Literal"/>
+    <genClasses ecoreClass="common.ecore#//Block"/>
+    <genClasses ecoreClass="common.ecore#//Comment"/>
+    <genClasses ecoreClass="common.ecore#//MultiComment"/>
+    <genClasses ecoreClass="common.ecore#//SingleComment"/>
+    <genClasses image="false" ecoreClass="common.ecore#//Located"/>
+  </genPackages>
+</genmodel:GenModel>

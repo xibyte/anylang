@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="language" name="Language" schema="schema/language.exsd" />
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Soy Editor"
+            extensions="simple"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            class="anylang._exp.editors.SimpleEditor"
+            id="mlang.editors.simple">
+      </editor>
+      <editor
+            name="XML Editor"
+            extensions="xml"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            class="anylang._exp.editors.XMLEditor"
+            id="mlang.editors.xml">
+      </editor>
+      <editor
+            name="Properties Editor"
+            extensions="properties"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            class="anylang._exp.editors.PropertiesEditor"
+            id="mlang.editors.properties">
+      </editor>
+      <editor
+            name="JavaScript Editor"
+            extensions="js"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            class="anylang._exp.editors.JSEditor"
+            id="mlang.editors.js">
+      </editor>
+      <editor
+            name="Bash Editor"
+            extensions="bash"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            class="anylang._exp.editors.BashEditor"
+            id="mlang.editors.bash">
+      </editor>
+   </extension>
+ 
+   
+   <extension
+         point="soy.language">
+      <language
+            class="soy.Soy"
+            id="soy">
+      </language>
+   </extension>
+   
+</plugin>

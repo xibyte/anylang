@@ -1,0 +1,19 @@
+<language id="test">
+
+  <lexer>
+    <when state="default">
+      <pattern exp="\{\{" token="BRACKETS" switch="tag" />
+    </when>
+    <when state="tag">
+      <pattern exp="\$\w+" token="KEY" />
+      <word token="WORD">
+        <keywords token="KEYWORD">foreach template</keywords>
+      </word>
+      <pattern exp="\}\}" token="BRACKETS" switch="default" />
+    </when>
+    <default for="default" token="TEMPLATE_DATA" />
+  </lexer>
+  
+  <generates lang="html" into="TEMPLATE_DATA" />
+
+</language>

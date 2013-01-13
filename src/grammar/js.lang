@@ -1,0 +1,71 @@
+<language id="js">
+
+  <lexer>
+  	<when state="default">
+  		<pattern exp="/\*" token="COMMENT" switch="comment"  />
+  		<pattern exp="//.*$" token="COMMENT"  />
+  		
+  		<pattern exp="'" token="STRING_QUOTE" switch="stringS" />
+  		<pattern exp='"' token="STRING_QUOTE" switch="stringD" />
+  		<pattern exp="/" token="REGEX_QUOTE" switch="regex" />
+  		
+  		
+  		<pattern exp="\d+" token="NUMBER_LITERAL" scope="dom" />
+  		<pattern exp="\d+\.\d+" token="NUMBER_LITERAL" scope="dom" />
+  		
+  		<pattern exp="\{" token="OPEN_BRACE" scope="dom" />
+  		<pattern exp="\}" token="CLOSE_BRACE" scope="dom" />
+  		<pattern exp="\(" token="OPEN_BRACKET" scope="dom" />
+  		<pattern exp="\)" token="CLOSE_BRACKET" scope="dom" />
+  		<pattern exp="," token="COMMA" scope="dom" />
+  		<pattern exp="\." token="DOT" scope="dom" />
+  		<pattern exp="=" token="ASSIGN" scope="dom" />
+  		
+  		<pattern exp=";" token="SEMICOLON" scope="dom,format" />
+
+  		<pattern exp="[\r\n]" token="NEW_LINE" scope="format" />
+  		
+  		<word token="WORD">
+        	<keywords token="KEYWORD">
+	        	break case catch const continue
+	        	debugger default delete do
+				else false finally for function if in
+				instanceof new null return switch this
+				throw true try typeof var void while
+				with __proto__ prototype
+        	</keywords>
+      	</word>
+  	</when>
+  	
+  	<when state="comment">
+  		<pattern exp="\*/" token="COMMENT" switch="default"  />
+  		<pattern exp="@\w+" token="DOCLET" />
+  		<pattern exp="&lt;.*&gt;" token="DOCLET_TAG" />
+  	</when>
+  	<default for="comment" token="COMMENT" />
+
+  	<when state="stringS,stringD">
+  		<pattern exp="\r|\n" token="STRING" switch="default" />
+  	</when>
+  	
+  	<when state="stringS">\
+  		<pattern exp="'" token="STRING_QUOTE" switch="default" />
+  	</when>
+  	<when state="stringD">\
+  		<pattern exp='"' token="STRING_QUOTE" switch="default" />
+  	</when>
+  	<default for="stringS" token="STRING" />
+  	<default for="stringD" token="STRING" />
+  	<inject into="STRING" lang="string" />
+  	
+  	<when state="regex">
+  		<pattern exp="/|\r|\n" token="REGEX_QUOTE" switch="default"  />
+  		<pattern exp="\\d|\\w|\\s|\\D|\\W|\\S" token="REGEX_KEY" />
+  	</when>
+  	<default for="regex" token="REGEX_ANY" />
+  	
+  </lexer>
+  
+  <parser class="soy._exp.dom.JSParser" />
+
+</language>

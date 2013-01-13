@@ -1,0 +1,33 @@
+package js.lexer;
+
+import mlang.IElementType;
+
+public enum JSElementTypes implements IElementType {
+
+	COMMENT,
+	EOF_COMMENT,
+	DOCLET,
+	WORD,
+	
+	FUNC_START, 
+	ASSIGN, 
+	JSON_ASSIGN, 
+	STRING, 
+	BRACE_OPEN, 
+	BRACE_CLOSE,
+	BRACKET_OPEN, 
+	BRACKET_CLOSE, 
+	ARRAY_START, 
+	ARRAY_END, 
+	FUNCTION, 
+	WHITESPACE, 
+	OTHER, 
+	FUNCTION_NAME, 
+	ARGS_START, 
+	ARG, 
+	COMMA, 
+	ARGS_END,
+	VAR,
+	MULTI_COMMENT,
+	SINGLE_COMMENT,
+}

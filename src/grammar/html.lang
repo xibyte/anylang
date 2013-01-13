@@ -1,0 +1,41 @@
+<language id="html">
+
+  <lexer>
+    <when state="default">
+      <pattern exp="&lt;script" token="BRACKETS" switch="script.tag" />
+      <pattern exp="&lt;!--" token="BRACKETS" switch="comment" />
+      <pattern exp="&lt;" token="BRACKETS" switch="tag" />
+      <word token="WORD">
+          <keywords token="KEYWORD">lol my fun</keywords>
+      </word>
+    </when>
+    <when state="script.tag">
+      <pattern exp="&gt;" token="BRACKETS" switch="injected.js" />
+    </when>
+    <when state="injected.js">
+      <pattern exp="&lt;/script&gt;" token="BRACKETS" switch="default" />
+    </when>
+    <when state="tag">
+      <pattern exp="\w+=" token="PARAM" />
+      <pattern exp="'" token="LITERAL" switch="literal"/>
+      <pattern exp="&gt;" token="BRACKETS" switch="default"/>
+    </when>
+    <when state="comment">
+      <word token="WORD">
+        <keywords token="KEYWORD">comment</keywords>
+      </word>
+      <pattern exp="&gt;" token="BRACKETS" switch="default"/>
+    </when>
+    <when state="literal">
+      <pattern exp="'" token="LITERAL" switch="default"/>
+    </when>
+    <!--literal from="'" to="'" token="LITERAL" /-->
+
+    <default for="injected.js" token="INJECTED_JS" />
+    <default for="literal" token="LITERAL" />
+
+    <inject into="INJECTED_JS" lang="js" />
+
+  </lexer>
+
+</language>

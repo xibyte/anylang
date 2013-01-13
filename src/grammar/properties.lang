@@ -1,0 +1,30 @@
+<language id="properties">
+
+  <lexer>
+  
+    <when state="default">
+      <pattern exp="(#|\!).*$" token="COMMENT" />
+    </when>
+
+    <when state="key,default">
+      <pattern exp="(?:[\S&amp;&amp;[^=\:]]|\\\:|\\=)" token="KEY" switch="key" />
+      <pattern exp="(?:=|\:)$" token="OPERAND" switch="default  " />
+      <pattern exp="(?:=|\:)" token="OPERAND" switch="value" />
+    </when>
+
+    <when state="key">
+      <pattern exp="[\t\ ]+" token="WS" switch="assigning" />
+    </when>
+    
+    <when state="assigning">
+      <pattern exp="(?:=|\:)$" token="OPERAND" switch="default  " />
+      <pattern exp="(?:=|\:)" token="OPERAND" switch="value" />
+      <pattern exp="[\t\ ]+" token="WS" />
+    </when>
+
+    <when state="value,assigning">
+      <pattern exp=".*\\[\r\n]" token="VALUE" />
+      <pattern exp=".*$" token="VALUE" switch="default" />
+    </when>
+  </lexer>
+</language>

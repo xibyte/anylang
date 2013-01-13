@@ -1,0 +1,58 @@
+<language id="bash">
+
+  <lexer>
+  	<when state="default">
+	  	<pattern exp="#\!.*$" token="META"  />
+		<pattern exp='#.*$' token="COMMENT"  />
+		
+		<pattern exp="'" token="STRING_QUOTE" switch="stringS" />
+  		<pattern exp='"' token="STRING_QUOTE" switch="stringD" />
+  		<pattern exp='`' token="EXEC_QUOTE" switch="exec" />
+		
+		<pattern exp="(?&lt;!\S)/dev/null(?!\S)" token="MARK" />
+  		
+  		<word token="WORD" pattern="\w+">
+        	<keywords token="KEYWORD">
+        		if then else elif fi for in
+        		do done select case continue 
+        		esac while until return exit
+        	</keywords>
+        	<keywords token="SHELL_COMMAND">
+        		cd while read ls rm mkdir mkdirs 
+        		cp mv awk sed xargs grep egrep
+        		tar zip unzip wget 
+        	</keywords>
+      	</word>
+  	</when>
+
+  	<when state="default,stringS,stringD,exec">
+  		<pattern exp="\$\d+" token="PARG" />
+  		<pattern exp="\$@" token="PARG" />
+  		<pattern exp="\$\*" token="PARG" />
+  		<pattern exp="\$\?" token="PARG" />
+  		<pattern exp="\$#" token="PARG" />
+  		<pattern exp="\$\w+" token="VAR" />
+  	</when>
+
+  	<when state="stringS,stringD">
+  		<pattern exp="\r|\n" token="STRING" switch="default" />
+  	</when>
+  	
+  	<when state="stringS">\
+  		<pattern exp="'" token="STRING_QUOTE" switch="default" />
+  	</when>
+  	<when state="stringD">\
+  		<pattern exp='"' token="STRING_QUOTE" switch="default" />
+  	</when>
+  	<default for="stringS" token="STRING" />
+  	<default for="stringD" token="STRING" />
+  	<inject into="STRING" lang="string" />
+
+  	<when state="exec">
+  		<pattern exp="(?>`|\r|\n)" token="EXEC" switch="default" />
+  	</when>
+  	<default for="exec" token="EXEC" />
+  		
+  </lexer>
+
+</language>

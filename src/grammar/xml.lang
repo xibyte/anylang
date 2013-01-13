@@ -1,0 +1,38 @@
+<language id="xml">
+
+  <lexer>
+    <when state="default">
+      <pattern exp="&lt;!--" token="COMMENT" switch="comment" />
+      <pattern exp="&lt;/" token="BRACKETS" switch="tag.start" />
+      <pattern exp="&lt;" token="BRACKETS" switch="tag.start" />
+    </when>
+    <when state="comment">
+      <pattern exp="--&gt;" token="COMMENT" switch="default" />
+      <pattern exp="." token="COMMENT"  />
+    </when>
+    
+    <when state="tag.start, tag">
+      <pattern exp="/&gt;" token="BRACKETS" switch="default" />
+      <pattern exp="&gt;" token="BRACKETS" switch="default" />
+    </when>
+    
+    <when state="tag.start">
+      <pattern exp="\w+" token="TAG_NAME" switch="tag" />
+    </when>
+    
+    <when state="tag">
+      <pattern exp="\w+=" token="PARAM" />
+      <pattern exp="'" token="LITERAL_QUOTE" switch="literal"/>
+      <pattern exp='"' token="LITERAL_QUOTE" switch="literal2"/>
+    </when>
+    <when state="literal">
+      <pattern exp="'" token="LITERAL_QUOTE" switch="tag"/>
+    </when>
+    <when state="literal2">
+      <pattern exp='"' token="LITERAL_QUOTE" switch="tag"/>
+    </when>
+    <default for="literal" token="LITERAL" />
+    <default for="literal2" token="LITERAL" />
+  </lexer>
+
+</language>

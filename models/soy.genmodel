@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/soy/src-gen"
+    modelPluginID="soy" modelName="Soy" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>soy.ecore</foreignModel>
+  <genPackages prefix="Soy" basePackage="org.eclipselabs.mlang.models" disposableProviderFactory="true"
+      ecorePackage="soy.ecore#/">
+    <genClasses ecoreClass="soy.ecore#//Tag">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Tag/variables"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute soy.ecore#//Tag/tagName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Tag/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Tag/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Tag/openLocation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Tag/closeLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="soy.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute soy.ecore#//Variable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Variable/location"/>
+    </genClasses>
+    <genClasses ecoreClass="soy.ecore#//TemplateTag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute soy.ecore#//TemplateTag/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//TemplateTag/doclet"/>
+    </genClasses>
+    <genClasses ecoreClass="soy.ecore#//IfTag">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//IfTag/elseLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="soy.ecore#//Doclet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Doclet/location"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Doclet/params"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference soy.ecore#//Doclet/template"/>
+    </genClasses>
+    <genClasses ecoreClass="soy.ecore#//Param">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute soy.ecore#//Param/optional"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Common" basePackage="org.eclipselabs.mlang.models" disposableProviderFactory="true"
+      ecorePackage="common.ecore#/">
+    <genClasses ecoreClass="common.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//Location/offset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//Location/length"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

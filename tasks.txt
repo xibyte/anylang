@@ -1,0 +1,20 @@
+- don't store default partitions. They take a lot of place. 
+
+- structure parsers
+- autoedits
+- formatings
+
+
+- API & comments
+- second through out
+- strings in flex grammar
+- resource managment(color, fonts)
+- comment by ctrl + '/' and in html too
+- camel case navigation
+- tabulation policy
+- Ctrl+O outline
+
+CHECKS FOR NEW ECLIPSE VERSIONS
+- LanguageEditor.createSourceViewer() should be created like in super method.
+- UI for languages settings
+ 
